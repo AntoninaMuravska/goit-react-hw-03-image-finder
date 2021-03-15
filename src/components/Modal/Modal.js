@@ -6,20 +6,20 @@ const modalRoot = document.querySelector('#modal-root');
 
 export default class Modal extends Component {
   componentDidMount() {
-    console.log('Modal componentDidMount');
+    // console.log('Modal componentDidMount');
 
     window.addEventListener('keydown', this.handleKeyDown);
   }
   componentWillUnmount() {
     //   метод для очистки за собой(слушатели, таймауты и тд)
-    console.log('Modal componentWillUnmount');
+    // console.log('Modal componentWillUnmount');
 
     window.removeEventListener('keydown', this.handleKeyDown);
   }
 
   handleKeyDown = event => {
     if (event.code === 'Escape') {
-      console.log('Нажали ESC, нужно закрыть модалку');
+      // console.log('Нажали ESC, нужно закрыть модалку');
       this.props.openModal();
     }
   };

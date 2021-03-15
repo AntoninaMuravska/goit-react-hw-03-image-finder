@@ -43,14 +43,15 @@ class App extends Component {
   };
 
   openModal = event => {
-    // console.log(event.target)
-    const { images } = this.state;
-
+    // console.log(event.target);
+    // console.log(event.target.nodeName);
     if (event.target.nodeName === 'IMG') {
       this.toggleModal();
     }
 
-    const targetImg = images.find(({ id }) => id === Number(event.target.id));
+    const targetImg = this.state.images.find(
+      ({ id }) => id === Number(event.target.id),
+    );
     this.setState({ largeImg: targetImg.largeImageURL });
   };
 
@@ -88,6 +89,7 @@ class App extends Component {
           <ImageGallery onClick={this.openModal}>
             <ImageGalleryItem images={images} />
           </ImageGallery>
+
           {images.length > 0 && <Button onClick={this.fetchImages} />}
           {showModal && (
             <Modal largeImg={largeImg} openModal={this.toggleModal} />
