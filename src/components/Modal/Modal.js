@@ -7,13 +7,11 @@ const modalRoot = document.querySelector('#modal-root');
 export default class Modal extends Component {
   componentDidMount() {
     // console.log('Modal componentDidMount');
-
     window.addEventListener('keydown', this.handleKeyDown);
   }
   componentWillUnmount() {
     //   метод для очистки за собой(слушатели, таймауты и тд)
     // console.log('Modal componentWillUnmount');
-
     window.removeEventListener('keydown', this.handleKeyDown);
   }
 
@@ -28,7 +26,6 @@ export default class Modal extends Component {
     // console.log('кликнули в бекдроп');
     // console.log('на чем клацнули', event.target);
     // console.log('на чем сработал обработчик события', event.currentTarget);
-
     if (event.currentTarget === event.target) {
       this.props.openModal();
     }
