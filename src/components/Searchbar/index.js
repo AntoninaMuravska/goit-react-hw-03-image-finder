@@ -1,1 +1,1 @@
-// import { default } from "./Searchbar";
+export { default } from './Searchbar';

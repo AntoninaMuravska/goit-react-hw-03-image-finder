@@ -1,1 +1,1 @@
-// import { default } from "./Loader";
+export { default } from './Loader';

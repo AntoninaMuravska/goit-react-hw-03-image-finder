@@ -1,1 +1,1 @@
-// import { default } from "./ImageGalleryItem";
+export { default } from './ImageGalleryItem';
