@@ -36,8 +36,6 @@ class App extends Component {
       // console.log('Изменился запрос');
       this.fetchImages();
     }
-
-    this.windowScroll();
   }
 
   windowScroll() {
@@ -76,21 +74,20 @@ class App extends Component {
     // объект настроек(если более двух)
     const options = { searchQuery, page };
 
-    this.setState({ status: Status.PENDING });
-
     fetchImage(options)
       .then(images => {
         this.setState(prevState => ({
           images: [...prevState.images, ...images],
           page: prevState.page + 1,
         }));
+        this.setState({ status: Status.PENDING });
       })
       .catch(error => {
         this.setState({ error, status: Status.REJECTED });
         toast.error('Sorry, try again');
       })
       .finally(() => {
-        this.setState({ status: Status.RESOLVED });
+        this.setState({ status: Status.RESOLVED }, () => this.windowScroll());
       });
   };
 
@@ -109,6 +106,7 @@ class App extends Component {
     if (status === Status.PENDING) {
       return (
         <>
+          <SearchBar onSubmit={this.handleSearchbarSubmit}></SearchBar>;
           <Loader />
         </>
       );
